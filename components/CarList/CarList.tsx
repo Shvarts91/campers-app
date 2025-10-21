@@ -6,7 +6,6 @@ type CarsListProps = {
 };
 
 const CarsList = ({ cars }: CarsListProps) => {
-  console.log(cars);
   return (
     <div>
       {cars.map((car) => (
