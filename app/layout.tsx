@@ -21,9 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${interSans.variable}`}>
-        {/* <header>
-          <h1>Campers App</h1>
-        </header> */}
         <Header />
         <main>{children}</main>
       </body>

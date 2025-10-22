@@ -7,17 +7,12 @@ type CarsListProps = {
 
 const CarsList = ({ cars }: CarsListProps) => {
   return (
-    <div>
+    <ul>
       {cars.map((car) => (
         <CarItem key={car.id} item={car} />
       ))}
-    </div>
+    </ul>
   );
-  //   return items.map((car) => {
-  //     console.log(car);
-
-  //     return <CarItem key={car.id} item={car} />;
-  //   });
 };
 
 export default CarsList;

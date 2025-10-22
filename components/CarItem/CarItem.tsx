@@ -5,7 +5,11 @@ type CarItemProps = {
 };
 
 const CarItem = ({ item }: CarItemProps) => {
-  return <p>{item.name}</p>;
+  return (
+    <li>
+      <p>{item.name}</p>
+    </li>
+  );
 };
 
 export default CarItem;
