@@ -1,5 +1,5 @@
-import styles from "./page.module.css";
-import Link from "next/link";
+import styles from './page.module.css';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -7,7 +7,9 @@ export default function Home() {
       <div className={styles.content}>
         <h1>Campers of your dreams</h1>
         <h3>You can find everything you want in our catalog</h3>
-        <Link href="/catalog">View Now</Link>
+        <Link className={styles.button} href="/catalog">
+          View Now
+        </Link>
       </div>
     </div>
   );

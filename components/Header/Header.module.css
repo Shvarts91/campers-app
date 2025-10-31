@@ -2,6 +2,8 @@
   position: relative;
   line-height: 1.5;
   padding: 28px 64px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #f2f4f7;
 }
 
 .navList {

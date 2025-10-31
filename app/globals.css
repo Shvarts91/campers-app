@@ -39,9 +39,9 @@ a {
 }
 
 ul {
-  list-style: none; 
-  padding: 0;  
-  margin: 0; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,13 +50,11 @@ ul {
   }
 }
 
-
 .default-link-styles {
   color: #101828;
-  
 }
 
 .active-link-styles {
   color: #d84343;
-  font-weight: 500; 
+  font-weight: 500;
 }
