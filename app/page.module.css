@@ -14,9 +14,31 @@
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans); */
-
+  color: #f7f7f7;
   min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: left;
+  background: url(../public/bg.jpg);
+  padding-left: 64px;
+}
+
+.page h1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 0.66667;
+  margin-bottom: 16px;
+}
+
+.page h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+
+  margin-bottom: 40px;
+}
+
+.content {
+  max-width: 571px;
+  white-space: nowrap;
 }

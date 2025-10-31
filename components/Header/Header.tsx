@@ -1,16 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
+import Link from 'next/link';
+import style from './Header.module.css';
+import NavLink from './NavLink';
+import Image from 'next/image';
 const Header = () => {
   return (
-    <header>
-      <Image src="/logo.jpg" alt="logo" width={136} height={16} />
+    <header className={style.header}>
+      <Link className={style.logo} href="/">
+        <Image width={136} height={16} src="/logo.jpg" alt="Campers Logo" />
+      </Link>
+
       <nav>
-        <ul>
+        <ul className={style.navList}>
           <li>
-            <Link href="/">Home</Link>
+            <NavLink href="/">Home</NavLink>
           </li>
           <li>
-            <Link href="/catalog">Catalog</Link>
+            <NavLink href="/catalog">Catalog</NavLink>
           </li>
         </ul>
       </nav>

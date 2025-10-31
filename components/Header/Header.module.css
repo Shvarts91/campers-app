@@ -1,0 +1,20 @@
+.header {
+  position: relative;
+  line-height: 1.5;
+  padding: 28px 64px;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 64px;
+  width: 136px;
+  height: 16px;
+  transform: translateY(-50%);
+}
