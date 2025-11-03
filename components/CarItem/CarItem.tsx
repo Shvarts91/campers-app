@@ -7,13 +7,11 @@ type CarItemProps = {
 };
 
 const CarItem = ({ item }: CarItemProps) => {
-  console.log(item);
-
   return (
     <li className={s.carItem}>
-      <svg width="24" height="24" aria-hidden="true">
+      {/* <svg width="24" height="24" aria-hidden="true">
         <use href="/symbol-defs.svg#icon-map" />
-      </svg>
+      </svg> */}
       <p>{item.name}</p>
     </li>
   );

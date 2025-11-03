@@ -1,28 +1,20 @@
-const FilterItem = ({
-  name,
-  iconId,
-  value,
-  onChangeValue,
-  title,
-}: {
-  name: string;
+type FilterItemProps = {
   iconId: string;
-  value: boolean;
-  onChangeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
   title: string;
-}) => {
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
+const FilterItem = ({ iconId, title, ...rest }: FilterItemProps) => {
+  const id = rest.name?.replace(/\./g, '-');
   return (
-    <label>
+    <label
+      htmlFor={id}
+      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+    >
       <svg aria-hidden="true" width={16} height={16}>
-        <use href={`/public/symbol-defs.svg${iconId}`} />
+        <use href={`/symbol-defs.svg#${iconId}`} />
       </svg>
       <span>{title}</span>
-      <input
-        onChange={onChangeValue}
-        checked={value}
-        name={name}
-        type="checkbox"
-      />
+      <input id={id} type="checkbox" {...rest} />
     </label>
   );
 };
