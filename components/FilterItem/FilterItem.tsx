@@ -1,9 +1,11 @@
 type FilterItemProps = {
   iconId: string;
   title: string;
+  type?: 'checkbox' | 'radio';
+  value?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-const FilterItem = ({ iconId, title, ...rest }: FilterItemProps) => {
+const FilterItem = ({ iconId, title, type, ...rest }: FilterItemProps) => {
   const id = rest.name?.replace(/\./g, '-');
   return (
     <label
@@ -14,7 +16,7 @@ const FilterItem = ({ iconId, title, ...rest }: FilterItemProps) => {
         <use href={`/symbol-defs.svg#${iconId}`} />
       </svg>
       <span>{title}</span>
-      <input id={id} type="checkbox" {...rest} />
+      <input id={id} type={type} {...rest} />
     </label>
   );
 };
