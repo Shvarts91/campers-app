@@ -1,5 +1,5 @@
-import { Car } from "@/lib/api";
-import CarItem from "../CarItem/CarItem";
+import { Car } from '@/lib/api';
+import CarItem from '../CarItem/CarItem';
 
 type CarsListProps = {
   cars: Car[];

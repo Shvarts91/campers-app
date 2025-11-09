@@ -11,11 +11,15 @@ export type Equipment = {
 export type FilterType = '' | 'van' | 'fullyIntegrated' | 'alcove';
 
 export type FiltersState = {
+  location: string;
   equipment: Equipment;
   type: FilterType;
 
-  setFilters: (payload: { equipment: Equipment; type: FilterType }) => void;
-  resetFilters: () => void;
+  setFilters: (payload: {
+    location: string;
+    equipment: Equipment;
+    type: FilterType;
+  }) => void;
 };
 
 const defaultEquipment: Equipment = {
@@ -27,16 +31,13 @@ const defaultEquipment: Equipment = {
 };
 
 export const useFiltersStore = create<FiltersState>((set) => ({
+  location: '',
   equipment: defaultEquipment,
   type: '',
   setFilters: (payload) =>
     set(() => ({
+      location: payload.location,
       equipment: payload.equipment,
       type: payload.type,
-    })),
-  resetFilters: () =>
-    set(() => ({
-      equipment: defaultEquipment,
-      type: '',
     })),
 }));

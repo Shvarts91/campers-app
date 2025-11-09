@@ -5,41 +5,52 @@ import { Car } from '@/lib/api';
 import { useForm } from 'react-hook-form';
 import FilterItem from '../FilterItem/FilterItem';
 import { useFiltersStore, Equipment, FilterType } from '@/stores/filtersStore';
+import FilterLocation from '../FilterLocation/FilterLocation';
 
 type FiltersProps = {
   cars: Car[];
 };
 
 type FormValues = {
+  location: string;
   equipment: Equipment;
   type: FilterType;
 };
 
 const Filters = ({ cars }: FiltersProps) => {
+  const storeLocation = useFiltersStore((s) => s.location);
   const storeEquipment = useFiltersStore((s) => s.equipment);
   const storeType = useFiltersStore((s) => s.type);
   const setFilters = useFiltersStore((s) => s.setFilters);
 
   const { register, watch, handleSubmit } = useForm<FormValues>({
     defaultValues: {
+      location: storeLocation,
       equipment: storeEquipment,
       type: storeType,
     },
   });
 
-  const [watchedEquipment, watchedType] = watch(['equipment', 'type'] as const);
+  const [watchedLocation, watchedEquipment, watchedType] = watch([
+    'location',
+    'equipment',
+    'type',
+  ] as const);
 
   React.useEffect(() => {
-    if (!watchedEquipment || watchedType === undefined) return;
+    if (watchedLocation || !watchedEquipment || watchedType === undefined)
+      return;
 
     setFilters({
+      location: watchedLocation as string,
       equipment: watchedEquipment as Equipment,
       type: watchedType as FilterType,
     });
-  }, [watchedEquipment, watchedType, setFilters]);
+  }, [watchedLocation, watchedEquipment, watchedType, setFilters]);
 
   const onSubmit = (data: FormValues) => {
     setFilters({
+      location: data.location,
       equipment: data.equipment,
       type: data.type,
     });
@@ -51,6 +62,9 @@ const Filters = ({ cars }: FiltersProps) => {
     <div>
       <h6>Filters</h6>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <FilterLocation {...register('location')} />
+        </div>
         <div>
           <h6>Vehicle equipment</h6>
           <FilterItem
