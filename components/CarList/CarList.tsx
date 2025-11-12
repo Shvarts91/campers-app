@@ -1,4 +1,4 @@
-import { Car } from '@/lib/api';
+import { Car } from '@/types/car';
 import CarItem from '../CarItem/CarItem';
 
 type CarsListProps = {

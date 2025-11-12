@@ -1,15 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Car } from '@/lib/api';
 import { useForm } from 'react-hook-form';
 import FilterItem from '../FilterItem/FilterItem';
 import { useFiltersStore, Equipment, FilterType } from '@/stores/filtersStore';
 import FilterLocation from '../FilterLocation/FilterLocation';
-
-type FiltersProps = {
-  cars: Car[];
-};
+import { fetchFilteredCars } from '@/lib/api/clientApi';
 
 type FormValues = {
   location: string;
@@ -17,7 +13,7 @@ type FormValues = {
   type: FilterType;
 };
 
-const Filters = ({ cars }: FiltersProps) => {
+const Filters = () => {
   const storeLocation = useFiltersStore((s) => s.location);
   const storeEquipment = useFiltersStore((s) => s.equipment);
   const storeType = useFiltersStore((s) => s.type);
@@ -48,14 +44,20 @@ const Filters = ({ cars }: FiltersProps) => {
     });
   }, [watchedLocation, watchedEquipment, watchedType, setFilters]);
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     setFilters({
       location: data.location,
       equipment: data.equipment,
       type: data.type,
     });
 
-    console.log('Filters submitted:', data);
+    try {
+      const filteredCars = await fetchFilteredCars();
+
+      console.log(filteredCars);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
