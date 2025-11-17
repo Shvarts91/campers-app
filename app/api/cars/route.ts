@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { api } from '../api';
 import { Car } from '@/types/car';
 
@@ -7,38 +7,20 @@ export type CarListResponse = {
   total: number;
 };
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   const { data } = await api<CarListResponse>('/campers');
+
+  const { searchParams } = new URL(req.url);
+
+  const location = searchParams.get('location');
+  const type = searchParams.get('type');
+  const TV = searchParams.get('TV');
+  const AC = searchParams.get('AC');
+  const automatic = searchParams.get('automatic');
+  const kitchen = searchParams.get('kitchen');
+  const bathroom = searchParams.get('bathroom');
+
+  console.log(location, type, TV, AC, automatic, kitchen, bathroom);
 
   return NextResponse.json({ data });
 }
-
-// export async function POST(req: Request) {
-//   const body = await req.json();
-//   const { location, equipment, type } = body;
-
-//   let filteredCars = [...cars];
-
-//   if (location) {
-//     filteredCars = filteredCars.filter((car) => {
-//       car.location.toLowerCase().includes(location.toLowerCase());
-//     });
-//   }
-
-//   if (type) {
-//     filteredCars = filteredCars.filter((car) => car.type === type);
-//   }
-
-//   if (equipment) {
-//     filteredCars = filteredCars.filter((car) => {
-//       return Object.entries(equipment).every(([key, value]) => {
-//         if (value === true) {
-//           return car.equipment[key as keyof typeof car.equipment] === true;
-//         }
-//         return true;
-//       });
-//     });
-//   }
-
-//   return NextResponse.json(filteredCars);
-// }

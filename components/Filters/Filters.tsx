@@ -5,44 +5,24 @@ import { useForm } from 'react-hook-form';
 import FilterItem from '../FilterItem/FilterItem';
 import { useFiltersStore, Equipment, FilterType } from '@/stores/filtersStore';
 import FilterLocation from '../FilterLocation/FilterLocation';
-import { fetchFilteredCars } from '@/lib/api/clientApi';
 
-type FormValues = {
+export type FormValues = {
   location: string;
   equipment: Equipment;
   type: FilterType;
 };
 
 const Filters = () => {
-  const storeLocation = useFiltersStore((s) => s.location);
-  const storeEquipment = useFiltersStore((s) => s.equipment);
-  const storeType = useFiltersStore((s) => s.type);
+  const storeParams = useFiltersStore();
   const setFilters = useFiltersStore((s) => s.setFilters);
 
-  const { register, watch, handleSubmit } = useForm<FormValues>({
+  const { register, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      location: storeLocation,
-      equipment: storeEquipment,
-      type: storeType,
+      location: storeParams.location,
+      equipment: storeParams.equipment,
+      type: storeParams.type,
     },
   });
-
-  const [watchedLocation, watchedEquipment, watchedType] = watch([
-    'location',
-    'equipment',
-    'type',
-  ] as const);
-
-  React.useEffect(() => {
-    if (watchedLocation || !watchedEquipment || watchedType === undefined)
-      return;
-
-    setFilters({
-      location: watchedLocation as string,
-      equipment: watchedEquipment as Equipment,
-      type: watchedType as FilterType,
-    });
-  }, [watchedLocation, watchedEquipment, watchedType, setFilters]);
 
   const onSubmit = async (data: FormValues) => {
     setFilters({
@@ -50,14 +30,6 @@ const Filters = () => {
       equipment: data.equipment,
       type: data.type,
     });
-
-    try {
-      const filteredCars = await fetchFilteredCars();
-
-      console.log(filteredCars);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (

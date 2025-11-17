@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Sidebar from './Sidebar';
+import Sidebar from './@sidebar/default';
 import styles from './layout.module.css';
 
 export const metadata: Metadata = {

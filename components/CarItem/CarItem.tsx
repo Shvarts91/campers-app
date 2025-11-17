@@ -1,4 +1,4 @@
-import { Car } from '@/lib/api';
+import { Car } from '@/lib/api/api';
 import s from './CarItem.module.css';
 import { log } from 'console';
 
