@@ -3,7 +3,6 @@ import CarItem from '../CarItem/CarItem';
 import { useQuery } from '@tanstack/react-query';
 import { useFiltersStore } from '@/stores/filtersStore';
 import { CarListResponse, fetchCars } from '@/lib/api/clientApi';
-
 import { FormValues } from '../Filters/Filters';
 
 const CarList = () => {

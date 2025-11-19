@@ -1,6 +1,5 @@
-import { Car } from '@/lib/api/api';
+import { Car } from '@/types/car';
 import s from './CarItem.module.css';
-import { log } from 'console';
 
 type CarItemProps = {
   item: Car;
