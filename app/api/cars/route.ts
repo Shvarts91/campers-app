@@ -9,7 +9,6 @@ export type CarListResponse = {
 
 export async function GET(req: NextRequest) {
   const { data } = await api<CarListResponse>('/campers');
-  console.log(data);
 
   const { searchParams } = new URL(req.url);
 

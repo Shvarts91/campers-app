@@ -24,7 +24,7 @@ export async function fetchCars(params: Filters = {}) {
   return response.data;
 }
 
-// export async function fetchFilteredCars() {
-//   const response = await api.get('/cars');
-//   return response.data;
-// }
+export async function fetchCar(id: string) {
+  const response = await api.get(`/cars/${id}`);
+  return response.data;
+}

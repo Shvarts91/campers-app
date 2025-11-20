@@ -1,11 +1,15 @@
+import { fetchCar } from '@/lib/api/clientApi';
+
 type DetailsProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 const Details = async ({ params }: DetailsProps) => {
-  const { id } = await params;
+  const { id } = params;
 
-  return <div>Car details</div>;
+  const getCar = await fetchCar(id);
+
+  return <div>Car details {getCar.name}</div>;
 };
 
 export default Details;
