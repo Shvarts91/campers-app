@@ -1,6 +1,8 @@
 import { Car } from '@/types/car';
-import s from './CarItem.module.css';
+import styles from './CarItem.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useFavoritesStore } from '@/stores/useFavoritesStore';
 
 type CarItemProps = {
   item: Car;
@@ -8,14 +10,79 @@ type CarItemProps = {
 
 const CarItem = ({ item }: CarItemProps) => {
   console.log(item);
-  return (
-    <li className={s.carItem}>
-      {/* <svg width="24" height="24" aria-hidden="true">
-        <use href="/symbol-defs.svg#icon-map" />
-      </svg> */}
 
-      <Link href={`/catalog/${item.id}`}>
-        <p>{item.name}</p>
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+  const isFavorite = useFavoritesStore((state) => state.isFavorite(item.id));
+
+  const onLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    toggleFavorite(item.id);
+  };
+  return (
+    <li className={styles.linkItem}>
+      <Link className={styles.carItem} href={`/catalog/${item.id}`}>
+        <div className={styles.imageWrapper}>
+          <Image
+            className={styles.img}
+            src={item.gallery[0].thumb}
+            alt={item.name}
+            width={292}
+            height={320}
+            priority
+            // fill
+            // unoptimized
+          />
+        </div>
+        <div className={styles.cardContent}>
+          <div className={styles.cardContentTitleBlock}>
+            <p className={styles.cardContentTitle}>{item.name}</p>
+            <div className={styles.cardContentPrice}>
+              <p className={styles.cardContentTitle}>
+                <span className={styles.euro}>&euro;</span>
+                {item.price}
+              </p>
+              <button
+                onClick={onLikeClick}
+                type="button"
+                aria-pressed={isFavorite}
+                aria-label={
+                  isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'
+                }
+                className={`${styles.likeButton} ${isFavorite ? styles.liked : ''}`}
+              >
+                <svg width="26" height="24" aria-hidden="true">
+                  <use href="/symbol-defs.svg#icon-heart" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div className={styles.ratingLocationBlock}>
+            <div className={styles.ratingLocationContent}>
+              <Image
+                src={'/star.svg'}
+                width={16}
+                height={16}
+                alt="rating star"
+              />
+              <span>
+                <span>{item.rating}</span>
+                <span>{`(${item.reviews.length} reviews)`}</span>
+              </span>
+            </div>
+            <div className={styles.ratingLocationContent}>
+              <span>
+                <svg width="16" height="16" aria-hidden="true">
+                  <use href="/symbol-defs.svg#icon-map" />
+                </svg>
+              </span>
+              <span>{item.location}</span>
+            </div>
+          </div>
+          <div className={styles.descriptionBlock}>
+            <span className={styles.description}>{item.description}</span>
+          </div>
+        </div>
       </Link>
     </li>
   );

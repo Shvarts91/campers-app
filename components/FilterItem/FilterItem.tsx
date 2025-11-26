@@ -1,3 +1,5 @@
+import styles from './FilterItem.module.css';
+
 type FilterItemProps = {
   iconId: string;
   title: string;
@@ -5,17 +7,23 @@ type FilterItemProps = {
   value?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-const FilterItem = ({ iconId, title, type, ...rest }: FilterItemProps) => {
-  const id = rest.name?.replace(/\./g, '-');
+const FilterItem = ({
+  iconId,
+  title,
+  type = 'checkbox',
+  value,
+  ...rest
+}: FilterItemProps) => {
+  const safeName = rest.name ? String(rest.name).replace(/\./g, '-') : 'input';
+  const id = value ? `${safeName}-${String(value)}` : safeName;
   return (
-    <label
-      htmlFor={id}
-      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
-    >
-      <svg aria-hidden="true" width={16} height={16}>
-        <use href={`/symbol-defs.svg#${iconId}`} />
-      </svg>
-      <span>{title}</span>
+    <label htmlFor={id} className={styles.filterElement}>
+      <span>
+        <svg aria-hidden="true" width={16} height={16}>
+          <use href={`/symbol-defs.svg#${iconId}`} />
+        </svg>
+      </span>
+      <p>{title}</p>
       <input id={id} type={type} {...rest} />
     </label>
   );

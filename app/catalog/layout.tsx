@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <div className={styles.catalogPage}>
       <Sidebar />
-      <div>{children}</div>
+      <div className={styles.catalogContent}>{children}</div>
     </div>
   );
 }

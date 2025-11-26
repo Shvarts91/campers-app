@@ -1,14 +1,25 @@
-.locationInput {
+.locationLabel {
   position: relative;
   display: flex;
 }
 
 .iconMapInput {
   position: absolute;
-  left: 0;
+  left: 18px;
   width: 16px;
   height: 16px;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+  z-index: 100;
+}
+
+.locationInput {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  padding: 18px 18px 18px 48px;
+  height: 56px;
+  width: 360px;
+  outline: none;
+  border: none;
 }

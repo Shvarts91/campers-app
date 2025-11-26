@@ -1,7 +1,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  max-width: 1440px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,7 +23,11 @@ body {
   font-family: Inter, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0px 15px;
+}
+.content-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0px 64px;
 }
 
 * {

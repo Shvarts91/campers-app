@@ -1,0 +1,26 @@
+.filterElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  padding: 16px 40px;
+  width: 112px;
+  height: 96px;
+}
+
+.filterElement input[type='checkbox'],
+.filterElement input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  opacity: 0;
+}
+
+.filterElement:has(input:checked) {
+  border-color: #e44848;
+}

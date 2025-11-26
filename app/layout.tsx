@@ -24,7 +24,9 @@ export default function RootLayout({
       <body className={`${interSans.variable}`}>
         <TanStackProvider>
           <Header />
-          <main>{children}</main>
+          <div className="content-wrapper">
+            <main>{children}</main>
+          </div>
         </TanStackProvider>
       </body>
     </html>

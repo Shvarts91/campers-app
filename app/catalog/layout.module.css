@@ -1,3 +1,9 @@
 .catalogPage {
+  margin-top: 40px;
   display: flex;
+  gap: 64px;
+}
+
+.catalogContent {
+  width: 100%;
 }

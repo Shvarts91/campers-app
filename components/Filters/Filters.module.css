@@ -1,0 +1,76 @@
+.formBlock {
+  max-width: 360px;
+}
+
+.locationBlock {
+  margin-bottom: 40px;
+}
+
+.titleLocation {
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.titleFilters {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #475467;
+  margin-bottom: 32px;
+}
+
+.titleSectionFilters {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.titleSectionFilters::after {
+  width: 360px;
+  height: 1px;
+  background-color: #dadde1;
+  content: '';
+  bottom: -24px;
+  left: 0;
+  position: absolute;
+  display: block;
+}
+
+.equipmentSection {
+  margin-bottom: 32px;
+}
+
+.typeSection {
+  margin-bottom: 40px;
+}
+
+.blockFilters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background-color: #e44848;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  transition: backgrounf-color 0.3s ease;
+}
+
+.filterButton:hover {
+  background-color: #d84343;
+}
