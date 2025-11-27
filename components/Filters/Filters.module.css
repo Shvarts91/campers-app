@@ -68,7 +68,8 @@
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: #fff;
-  transition: backgrounf-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .filterButton:hover {

@@ -59,12 +59,11 @@ const CarItem = ({ item }: CarItemProps) => {
           </div>
           <div className={styles.ratingLocationBlock}>
             <div className={styles.ratingLocationContent}>
-              <Image
-                src={'/star.svg'}
-                width={16}
-                height={16}
-                alt="rating star"
-              />
+              <span>
+                <svg className={styles.ratingIcon} width={16} height={16}>
+                  <use href="/symbol-defs.svg#icon-star"></use>
+                </svg>
+              </span>
               <span>
                 <span>{item.rating}</span>
                 <span>{`(${item.reviews.length} reviews)`}</span>
@@ -82,6 +81,48 @@ const CarItem = ({ item }: CarItemProps) => {
           <div className={styles.descriptionBlock}>
             <span className={styles.description}>{item.description}</span>
           </div>
+          <div className={styles.infoCarBlock}>
+            <div className={styles.infoCarElement}>
+              <span>
+                <svg width={16} height={16}>
+                  <use href="/symbol-defs.svg#icon-diagram"></use>
+                </svg>
+              </span>
+              <span>{item.transmission}</span>
+            </div>
+            <div className={styles.infoCarElement}>
+              <span>
+                <svg width={16} height={16}>
+                  <use href="/symbol-defs.svg#icon-petrol"></use>
+                </svg>
+              </span>
+              <span>{item.engine}</span>
+            </div>
+            <div className={styles.infoCarElement}>
+              <span>
+                <svg width={16} height={16}>
+                  <use href="/symbol-defs.svg#icon-kitchen"></use>
+                </svg>
+              </span>
+              <span>{item.kitchen === true ? 'Kitchen' : 'No kitchen'}</span>
+            </div>
+            <div className={styles.infoCarElement}>
+              <span>
+                <svg width={16} height={16}>
+                  <use href="/symbol-defs.svg#icon-wind"></use>
+                </svg>
+              </span>
+              <span>{item.AC === true ? 'AC' : 'No AC'}</span>
+            </div>
+          </div>
+          <span>
+            <Link
+              className={styles.showMoreButton}
+              href={`/catalog/${item.id}`}
+            >
+              Show More
+            </Link>
+          </span>
         </div>
       </Link>
     </li>
