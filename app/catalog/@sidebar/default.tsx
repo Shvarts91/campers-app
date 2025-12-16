@@ -1,6 +1,12 @@
-import Filters from '@/components/Filters/Filters';
+'use client';
 
-const Sidebar = async () => {
+import Filters from '@/components/Filters/Filters';
+import { useParams } from 'next/navigation';
+
+const Sidebar = () => {
+  const param = useParams();
+  if (param.id) return null;
+
   return <Filters />;
 };
 

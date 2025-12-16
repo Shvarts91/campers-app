@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { api } from '../../api';
-// import { CarListResponse } from '@/lib/api/clientApi';
 import { Car } from '@/types/car';
 
 type Props = {
@@ -16,7 +15,6 @@ export async function GET(req: NextRequest, { params }: Props) {
   const { data } = await api<CarListResponse>('/campers');
 
   const { id } = await params;
-  console.log(id);
 
   const car = data.items.find((item) => item.id === id);
 

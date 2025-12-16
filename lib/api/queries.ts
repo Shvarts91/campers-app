@@ -12,6 +12,11 @@ export interface Filters {
   bathroom?: Equipment['bathroom'];
 }
 
+export type FetchCarsParams = Filters & {
+  page: number;
+  limit: number;
+};
+
 export type CarListResponse = {
   data: {
     items: Car[];
@@ -19,7 +24,7 @@ export type CarListResponse = {
   };
 };
 
-export async function fetchCars(params: Filters = {}) {
+export async function fetchCars(params: FetchCarsParams) {
   const response = await api.get('/cars', { params });
   return response.data;
 }

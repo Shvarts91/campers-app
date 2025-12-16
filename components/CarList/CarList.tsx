@@ -1,45 +1,66 @@
 'use client';
 import CarItem from '../CarItem/CarItem';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { useFiltersStore } from '@/stores/filtersStore';
-import { CarListResponse, fetchCars } from '@/lib/api/clientApi';
-import { FormValues } from '../Filters/Filters';
+import { fetchCars } from '@/lib/api/queries';
+
+import styles from './CarList.module.css';
 
 const CarList = () => {
   const storeParams = useFiltersStore();
-  const { data, isPending, error } = useQuery<CarListResponse>({
+
+  const {
+    data,
+    error,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ['cars', storeParams],
-    queryFn: ({ queryKey }) => {
-      const queryKeyParams = queryKey.at(1) as FormValues;
-      if (typeof queryKeyParams !== 'object' || queryKeyParams === null) {
-        return Promise.resolve([]);
-      }
+    initialPageParam: 1,
+    queryFn: ({ pageParam = 1 }) => {
       return fetchCars({
-        ...queryKeyParams.equipment,
-        location: queryKeyParams.location,
-        type: queryKeyParams.type,
+        ...storeParams,
+        page: pageParam,
+        limit: 4,
       });
+    },
+    getNextPageParam: (lastPage) => {
+      const { page, limit, total } = lastPage.data;
+
+      const hasNext = page * limit < total;
+
+      return hasNext ? page + 1 : undefined;
     },
   });
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return (
-      <div style={{ color: 'red' }}>Error: {(error as Error).message}</div>
-    );
-  }
-  if (!data.data.items || data.data.items.length === 0) {
-    return <div>Cars not found</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div style={{ color: 'red' }}>Error</div>;
+
+  const cars = data?.pages.flatMap((page) => page.data.items) ?? [];
 
   return (
-    <ul>
-      {data.data.items.map((car) => (
-        <CarItem key={car.id} item={car} />
-      ))}
-    </ul>
+    <div>
+      <ul className={styles.carList}>
+        {cars.map((car) => (
+          <CarItem key={car.id} item={car} />
+        ))}
+      </ul>
+
+      <button
+        className={styles.carListButton}
+        type="button"
+        disabled={!hasNextPage || isFetchingNextPage}
+        onClick={() => fetchNextPage()}
+      >
+        {isFetchingNextPage
+          ? 'Loading...'
+          : hasNextPage
+            ? 'Load more'
+            : 'No more cars'}
+      </button>
+    </div>
   );
 };
 

@@ -9,8 +9,10 @@ export type CarListResponse = {
 
 export async function GET(req: NextRequest) {
   const { data } = await api<CarListResponse>('/campers');
-
   const { searchParams } = new URL(req.url);
+
+  const page = Number(searchParams.get('page')) || 1;
+  const limit = Number(searchParams.get('limit')) || 4;
 
   const getStringParam = (
     name: string,
@@ -36,7 +38,7 @@ export async function GET(req: NextRequest) {
   const kitchen = getBooleanParam('kitchen', searchParams);
   const bathroom = getBooleanParam('bathroom', searchParams);
 
-  const filtered = data.items.filter((item) => {
+  const filteredItems = data.items.filter((item) => {
     if (
       location &&
       !item.location.toLowerCase().includes(location.toLowerCase())
@@ -70,11 +72,14 @@ export async function GET(req: NextRequest) {
     return true;
   });
 
-  const total = filtered.length;
+  const start = (page - 1) * limit;
+  const items = filteredItems.slice(start, start + limit);
 
   const filteredData = {
-    items: filtered,
-    total: total,
+    items,
+    total: filteredItems.length,
+    page,
+    limit,
   };
 
   return NextResponse.json({ data: filteredData });

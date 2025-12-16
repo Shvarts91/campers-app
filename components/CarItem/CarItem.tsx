@@ -1,3 +1,5 @@
+'use client';
+
 import { Car } from '@/types/car';
 import styles from './CarItem.module.css';
 import Link from 'next/link';
@@ -9,8 +11,6 @@ type CarItemProps = {
 };
 
 const CarItem = ({ item }: CarItemProps) => {
-  console.log(item);
-
   const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
   const isFavorite = useFavoritesStore((state) => state.isFavorite(item.id));
 
@@ -21,7 +21,7 @@ const CarItem = ({ item }: CarItemProps) => {
   };
   return (
     <li className={styles.linkItem}>
-      <Link className={styles.carItem} href={`/catalog/${item.id}`}>
+      <div className={styles.carItem}>
         <div className={styles.imageWrapper}>
           <Image
             className={styles.img}
@@ -117,14 +117,14 @@ const CarItem = ({ item }: CarItemProps) => {
           </div>
           <span>
             <Link
-              className={styles.showMoreButton}
               href={`/catalog/${item.id}`}
+              className={styles.showMoreButton}
             >
               Show More
             </Link>
           </span>
         </div>
-      </Link>
+      </div>
     </li>
   );
 };

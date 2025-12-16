@@ -1,2 +1,27 @@
+.carList {
+  margin-bottom: 40px;
+}
 
+.carListButton {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+  padding: 16px 32px;
+  width: 145px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #101828;
+  cursor: pointer;
+  margin-bottom: 52px;
+  transition: border 0.3s ease;
+}
 
+.carListButton:hover {
+  border: 1px solid #d84343;
+}
