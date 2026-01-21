@@ -26,12 +26,12 @@ const CarList = () => {
         limit: 4,
       });
     },
-    getNextPageParam: (lastPage) => {
-      const { page, limit, total } = lastPage.data;
+    getNextPageParam: (lastPage, allPages) => {
+      const loadedItems = allPages.flatMap((page) => page.data.items).length;
 
-      const hasNext = page * limit < total;
+      const total = lastPage.data.total;
 
-      return hasNext ? page + 1 : undefined;
+      return loadedItems < total ? allPages.length + 1 : undefined;
     },
   });
 

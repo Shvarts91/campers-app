@@ -1,9 +1,21 @@
-import { ReactNode } from 'react';
+import TabNavigation from '@/components/TabNavigation/TabNavigation';
+import styles from './layout.module.css';
 
-type LayoutProps = {
-  children: ReactNode;
-};
+interface LayoutProps {
+  details: React.ReactNode;
+  reviews: React.ReactNode;
+  children: React.ReactNode;
+}
 
-export default function Layout({ children }: LayoutProps) {
-  return <>{children}</>;
+export default async function Layout({
+  details,
+  reviews,
+  children,
+}: LayoutProps) {
+  return (
+    <div className={styles.reviewsBlock}>
+      {children}
+      <TabNavigation details={details} reviews={reviews} />
+    </div>
+  );
 }

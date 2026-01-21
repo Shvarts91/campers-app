@@ -1,0 +1,51 @@
+.carItemTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  margin-bottom: 8px;
+}
+
+.ratingLocationBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ratingIcon {
+  fill: gold;
+}
+
+.ratingReviews {
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #101828;
+}
+
+.carItemPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
+  margin-bottom: 28px;
+}
+
+.imageWrapper {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 28px;
+}
+
+.img {
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.carItemDescription {
+  line-height: 1.5;
+  color: #475467;
+  margin-bottom: 60px;
+}

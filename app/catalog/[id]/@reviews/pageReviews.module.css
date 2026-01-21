@@ -1,0 +1,42 @@
+.reviewsBlock {
+  display: flex;
+  gap: 40px;
+}
+
+.reviews {
+  flex: 0 1 50%;
+  border-radius: 10px;
+  padding: 44px 80px;
+  background: #f7f7f7;
+}
+
+.formBlock {
+  flex: 0 1 50%;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 44px;
+}
+
+.logoNameBlock {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  position: relative;
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background-color: #f2f4f7;
+}
+
+.logo span {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33333;
+  color: #e44848;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

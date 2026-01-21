@@ -58,7 +58,7 @@ const Filters = () => {
             />
             <FilterItem
               {...register('equipment.kitchen')}
-              iconId="icon-kitchen"
+              iconId="icon-cup-hot"
               title="Kitchen"
               type="checkbox"
             />
@@ -82,7 +82,7 @@ const Filters = () => {
           <div className={styles.blockFilters}>
             <FilterItem
               {...register('type')}
-              iconId="icon-grid-2"
+              iconId="icon-bi_grid-2"
               title="Van"
               type="radio"
               value="van"
@@ -96,7 +96,7 @@ const Filters = () => {
             />
             <FilterItem
               {...register('type')}
-              iconId="icon-grid-3"
+              iconId="icon-bi_grid-3"
               title="Alcove"
               type="radio"
               value="alcove"

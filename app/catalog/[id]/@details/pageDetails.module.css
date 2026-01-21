@@ -1,0 +1,74 @@
+.featuresBlock {
+  display: flex;
+  gap: 40px;
+}
+
+.parameters {
+  flex: 0 1 50%;
+  border-radius: 10px;
+  padding: 44px 80px;
+  background: #f7f7f7;
+}
+
+.pageDetailsIcon {
+  stroke: #101828;
+  fill: none;
+}
+
+.formBlock {
+  flex: 0 1 50%;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 44px;
+}
+
+.iconsBlock {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.iconBlockItem {
+  border-radius: 100px;
+  padding: 12px 18px;
+  background-color: #f2f4f7;
+  text-transform: capitalize;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.vahicleDetailsTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 48px;
+}
+
+.vahicleDetailsTitle::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  top: 24px;
+  left: 0;
+  background-color: #dadde1;
+}
+
+.vehicleDetailsInformation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vehicleDetailsInformation:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.vehicleDetailsFormValue {
+  text-transform: capitalize;
+}

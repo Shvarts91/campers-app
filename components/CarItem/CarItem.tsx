@@ -19,6 +19,7 @@ const CarItem = ({ item }: CarItemProps) => {
 
     toggleFavorite(item.id);
   };
+
   return (
     <li className={styles.linkItem}>
       <div className={styles.carItem}>
@@ -30,8 +31,6 @@ const CarItem = ({ item }: CarItemProps) => {
             width={292}
             height={320}
             priority
-            // fill
-            // unoptimized
           />
         </div>
         <div className={styles.cardContent}>
@@ -93,7 +92,7 @@ const CarItem = ({ item }: CarItemProps) => {
             <div className={styles.infoCarElement}>
               <span>
                 <svg width={16} height={16}>
-                  <use href="/symbol-defs.svg#icon-petrol"></use>
+                  <use href="/symbol-defs.svg#icon-fuel-pump"></use>
                 </svg>
               </span>
               <span>{item.engine}</span>
@@ -101,7 +100,7 @@ const CarItem = ({ item }: CarItemProps) => {
             <div className={styles.infoCarElement}>
               <span>
                 <svg width={16} height={16}>
-                  <use href="/symbol-defs.svg#icon-kitchen"></use>
+                  <use href="/symbol-defs.svg#icon-cup-hot"></use>
                 </svg>
               </span>
               <span>{item.kitchen === true ? 'Kitchen' : 'No kitchen'}</span>
