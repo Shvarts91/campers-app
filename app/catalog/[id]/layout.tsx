@@ -13,7 +13,7 @@ export default async function Layout({
   children,
 }: LayoutProps) {
   return (
-    <div className={styles.reviewsBlock}>
+    <div className={styles.detailsPage}>
       {children}
       <TabNavigation details={details} reviews={reviews} />
     </div>

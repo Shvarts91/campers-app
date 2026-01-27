@@ -1,6 +1,6 @@
 .header {
   line-height: 1.5;
-  padding: 28px 0;
+  padding: 24px 0;
   background-color: #f7f7f7;
   border-bottom: 1px solid #f2f4f7;
 }
@@ -10,7 +10,6 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 64px;
 }
 
 .navList {

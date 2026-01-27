@@ -1,6 +1,7 @@
 import FormRegister from '@/components/FormRegister/FormRegister';
 import styles from './pageReviews.module.css';
 import { fetchCar } from '@/lib/api/queries';
+import { Rating } from '@/components/Rating/Rating';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,11 +19,11 @@ export default async function ReviewsPage({ params }: PageProps) {
               <div key={index}>
                 <div className={styles.logoNameBlock}>
                   <div className={styles.logo}>
-                    <span>{review.reviewer_name}</span>
+                    <span>{review.reviewer_name?.trim().charAt(0)}</span>
                   </div>
                   <div>
                     <p>{review.reviewer_name}</p>
-                    <p>{review.reviewer_rating}</p>
+                    <Rating value={review.reviewer_rating} />
                   </div>
                 </div>
                 <p>{review.comment}</p>

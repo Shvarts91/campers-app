@@ -109,7 +109,7 @@ export default function FormRegister({ carId }: FormRegisterProps) {
         <div>
           <input
             className={styles.input}
-            type="text"
+            type="date"
             name="bookingDate"
             placeholder="Date*"
           />
